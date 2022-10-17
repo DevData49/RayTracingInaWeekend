@@ -42,11 +42,11 @@ class Vec3
         {
              return *this *= 1/t;
         }
-        double length() const
+        double Length() const
         {
-            return sqrt(length_squared());
+            return sqrt(LengthSquared());
         }
-        double length_squared() const
+        double LengthSquared() const
         {
             return e[0]*e[0] + e[1]*e[1] + e[2]*e[2];
         }
@@ -54,6 +54,64 @@ class Vec3
     public:
         double e[3];
 };
+
+//Vec3 Utility Functions
+
+inline std::ostream& operator<<(std::ostream &out, const Vec3 &v)
+{
+    return out << v.e[0] <<' '<<v.e[1]<<' '<<v.e[2];
+}
+
+inline Vec3 operator+(const Vec3 &u, const Vec3 &v)
+{
+    return Vec3(u.e[0] + v.e[0], u.e[1]+v.e[1],u.e[2]+v.e[2]);
+}
+
+inline Vec3 operator-(const Vec3 &u, const Vec3 &v)
+{
+    return Vec3(u.e[0] - v[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
+}
+
+inline Vec3 operator*(const Vec3 &u, const Vec3 &v)
+{
+    return Vec3(u.e[0]* v.e[0], u.e[1]*v.e[1], u.e[2]*v.e[2]);
+}
+
+inline Vec3 operator*(double t, const Vec3 &v)
+{
+    return Vec3(t*v.e[0], t* v.e[1], t* v.e[2]);
+}
+
+inline Vec3 operator*(const Vec3 &v, double t)
+{
+    return t * v;
+}
+inline  Vec3 operator/(const Vec3 &v, double t)
+{
+    return v * (1/t);
+}
+
+inline double Dot(const Vec3 &u, const Vec3 &v)
+{
+    return u.e[0] * v.e[0] +
+           u.e[1] * v.e[1] +
+           u.e[2] * v.e[2];
+}
+
+inline Vec3 Cross(const Vec3 &u, const Vec3 &v) 
+{
+    return Vec3(
+                u.e[1] * v.e[2] - u.e[2] * v.e[1],
+                v.e[0] * u.e[2] - v.e[2] * u.e[0],
+                u.e[0] * v.e[1] - u.e[1] * v.e[0] );
+}
+
+inline Vec3 UnitVector(Vec3 v)
+{
+    return v/v.Length();
+}
+
+
 
 using Point = Vec3;
 using Color = Vec3;
