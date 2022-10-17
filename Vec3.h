@@ -113,7 +113,7 @@ inline Vec3 UnitVector(Vec3 v)
 
 
 
-using Point = Vec3;
+using Point3 = Vec3;
 using Color = Vec3;
 
 #endif
