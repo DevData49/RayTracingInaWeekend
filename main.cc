@@ -1,5 +1,8 @@
 #include<iostream>
 
+#include "Vec3.h"
+#include "Color.h"
+
 int main()
 {
     //Image
@@ -14,15 +17,12 @@ int main()
         std::cerr <<"\rScanlines remaining "<<j<<std::flush;
         for (int i = 0; i < image_width; i++)
         {
-            auto r = double(i) / image_width;
-            auto g = double(j)/image_height;
-            auto b = .25;
-
-            int ir = static_cast<int>(255.99*r);
-            int ig = static_cast<int>(255.99*g);
-            int ib = static_cast<int>(255.99*b);
-
-            std::cout<<ir<<' '<<ig<<' '<<ib<<'\n';
+            Color pixelColor = Vec3(
+                double(i)/image_width,
+                double(j)/image_height,
+                .25
+            );
+            WriteColor(std::cout, pixelColor);
         }
         
     }
