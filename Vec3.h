@@ -10,11 +10,11 @@ class Vec3
 {
     public:
         Vec3() : e{0,0,0} {}
-        Vec3(double e0, double e1, double e3) : e{e0, e1, e3} {}
+        Vec3(double e0, double e1, double e2) : e{e0, e1, e2} {}
 
         double x() const {return e[0];}
         double y() const {return e[1];}
-        double z() const {return e[3];}
+        double z() const {return e[2];}
 
         Vec3 operator-() {return Vec3(-e[0], -e[1], -e[2]);}
         double operator[](int i) const { return e[i];}
